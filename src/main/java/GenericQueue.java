@@ -31,9 +31,7 @@ public class GenericQueue<T> extends GenericList<T>{
 //            while(curr.hasNext){
 //                curr.next();
 //            }
-
         }
-
     }
 
 //    @Override
