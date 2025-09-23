@@ -2,11 +2,11 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 //
-public abstract class GenericList<T> implements Iterable<T>{
+public abstract class GenericList<T> implements Iterable<T> {
     private Node<T> head;
     private int length;
 
-    public class Node<T> {
+    public static class Node<T> {
         T data;
         int code;
         Node<T> next;
@@ -23,7 +23,7 @@ public abstract class GenericList<T> implements Iterable<T>{
             this.next = null;
         }
 
-        public Node(T data, int code ,Node<T> next) {
+        public Node(T data, int code, Node<T> next) {
             this.data = data;
             this.code = code;
             this.next = next;
@@ -49,15 +49,16 @@ public abstract class GenericList<T> implements Iterable<T>{
     public abstract T delete();
 
     public ArrayList<T> dumpList() {
-        ArrayList<T> res = new ArrayList<T>();
+        ArrayList<T> ret = new ArrayList<T>();
+
         Node<T> current = head;
         while (current != null) {
-    //          add data to list
+            //add data to list
+            ret.add(current.data);
+            current = current.next;
         }
-        return res;
+        return ret;
     }
-
-    ;
 
     public T get(int index) {
         //check within bounds
@@ -67,21 +68,26 @@ public abstract class GenericList<T> implements Iterable<T>{
 
 
         //for loop to get to index
+        Node<T> curr = head;
+        for (int i = 0; i < index; i++) {
+            curr = curr.next;
+        }
         // return that data
-        return head.data;//use
+        return curr.data;
     }
 
     public T set(int index, T data) {
-        //check within bounds
-        if (index < 0 || index >= length) {
+        if (index < 0 || index >= length) { //check within bounds
             return null;
         }
-
         //for loop to get to index
-        // save that data
-        //change it
-        //return saved
-        return head.data = data;
+        Node<T> curr = head;
+        for (int i = 0; i < index; i++) {
+            curr = curr.next;
+        }
+        T ret = curr.data;// save that data
+        curr.data = data;//change it
+        return ret;//return saved
     }
 
     public int getLength() {
@@ -101,7 +107,6 @@ public abstract class GenericList<T> implements Iterable<T>{
     }
 
     public Iterator<T> descendingIterator() {
-
         return null;
     }
 }
