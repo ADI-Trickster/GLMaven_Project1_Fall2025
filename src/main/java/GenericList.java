@@ -102,26 +102,6 @@ public abstract class GenericList<T> implements Iterable<T>{
 
     public Iterator<T> descendingIterator() {
 
-        Node curr =  head;
-        //hasNext if head == null ret false
-        @Override
-        public boolean hasNext() {
-            return curr != null;
-        }
-
-        //next goes to next and returns current/next data
-        @Override
-        public T next(){
-            if(hasNext() == null){
-                return null;
-            }
-
-            T returnData = curr.data;
-            curr = curr.next;
-            return returnData;
-        }
-        //remove
-
         return null;
     }
 }
