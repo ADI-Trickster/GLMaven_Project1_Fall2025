@@ -27,10 +27,12 @@ public class GenericQueue<T> extends GenericList<T>{
             this.tail = toAdd;
         }
         else{
-//            curr = getHead();
-//            while(curr.hasNext){
+            Node<T> curr =  getHead();
+            while(curr.hasNext){
 //                curr.next();
-//            }
+            }
+            curr.next = toAdd;
+            this.tail = curr.next;;
         }
     }
 

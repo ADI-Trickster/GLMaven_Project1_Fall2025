@@ -49,7 +49,7 @@ public abstract class GenericList<T> implements Iterable<T> {
     public abstract T delete();
 
     public ArrayList<T> dumpList() {
-        ArrayList<T> ret = new ArrayList<T>();
+        ArrayList<T> ret = new ArrayList<>();
 
         Node<T> current = head;
         while (current != null) {
@@ -102,8 +102,8 @@ public abstract class GenericList<T> implements Iterable<T> {
         return head;
     }
 
-    public void setHead(Node<T> newhead) {
-        this.head = newhead;
+    public void setHead(Node<T> newHead) {
+        this.head = newHead;
     }
 
     public Iterator<T> descendingIterator() {

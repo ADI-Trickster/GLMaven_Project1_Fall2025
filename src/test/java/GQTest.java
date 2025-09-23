@@ -14,7 +14,7 @@ import org.junit.jupiter.api.Test;
 
 public class GQTest {
 
-    static GenericQueue GQ;
+    static GenericQueue<Integer> GQ;
 
     @BeforeAll
     static void setup() {
