@@ -43,7 +43,6 @@ public class GQTest {
 //        GQ.enqueue(45);
 //        GQ.enqueue(55);
 //        assertEquals(5,GQ.getLength(), "wrong length of GenericQueue");
-////        assertEquals(2,1, "false test");
 //        GQ.dequeue();
 //        assertEquals(4,GQ.getLength(), "wrong length of GenericQueue");
 //        GQ.dequeue();
