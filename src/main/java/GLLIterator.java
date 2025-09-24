@@ -7,7 +7,7 @@ public class GLLIterator<T> implements Iterator<T>{
     //hasNext if head == null ret false
     @Override
     public boolean hasNext() {
-        return curr != null;
+        return curr.next != null;
     }
 
     //next goes to next and returns current/next data
@@ -16,11 +16,9 @@ public class GLLIterator<T> implements Iterator<T>{
         if(!hasNext()){
             return null;
         }
-
         T returnData = curr.data;
         curr = curr.next;
         return returnData;
     }
-    //remove
 
 }
