@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.Iterator;
-
 //
 public abstract class GenericList<T> implements Iterable<T> {
     private Node<T> head;
@@ -45,7 +44,6 @@ public abstract class GenericList<T> implements Iterable<T> {
     }
 
     public abstract void add(T data);
-
     public abstract T delete();
 
     public ArrayList<T> dumpList() {
@@ -65,7 +63,6 @@ public abstract class GenericList<T> implements Iterable<T> {
         if (index < 0 || index >= length) {
             return null;
         }
-
 
         //for loop to get to index
         Node<T> curr = head;
@@ -107,6 +104,9 @@ public abstract class GenericList<T> implements Iterable<T> {
     }
 
     public Iterator<T> descendingIterator() {
+        return  new ReverseGLLIterator<T>();
+    }
+    public Iterator<T> iterator() {
         return null;
     }
 }

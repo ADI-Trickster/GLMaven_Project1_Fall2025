@@ -1,3 +1,4 @@
+
 public class GenericQueue<T> extends GenericList<T>{
     Node<T> tail;
 
@@ -20,6 +21,7 @@ public class GenericQueue<T> extends GenericList<T>{
         this.setLength(1);
     }
 
+    @Override
     public void add(T data){
         Node<T> toAdd = new Node<T>(data);
         if(getHead() == null){
@@ -27,37 +29,59 @@ public class GenericQueue<T> extends GenericList<T>{
             this.tail = toAdd;
         }
         else{
-            Node<T> curr =  getHead();
-            while(curr.hasNext){
-//                curr.next();
-            }
-            curr.next = toAdd;
-            this.tail = curr.next;;
+            tail.next = toAdd;
+            this.tail = toAdd;
         }
+        this.setLength(this.getLength() + 1);
     }
 
 //    @Override
-//    public void add(T data, int code){
+    public void add(T data, int code){
+        Node<T> toAdd = new Node<T>(data);
+        if(getHead() == null){
+            this.setHead(toAdd);
+            this.tail = toAdd;
+        }
+        else{
+            tail.next = toAdd;
+            this.tail = toAdd;;
+        }
+        this.getHead().code = code;
+        this.setLength(this.getLength() + 1);
+    }
 
-////        this.code = code;
-//    }
-
-    @Override
+//    @Override
     public T delete() {
-        return null;
+        //check null
+        if(tail == null){
+            return null;
+        }
+
+        Node<T> toDelete = getHead();
+        T data = getHead().data;
+
+        //check if only one
+        if(getHead().next == null){
+            setHead(null);
+            this.tail = null;
+            setLength(0);
+            return data;
+        }
+        //set tail to 2nd last
+        //updates 2nd.next to null
+
+
+        setHead(getHead().next);
+        setLength(getLength() - 1);
+        return data;
     }
 
     public void enqueue(T data){
-//        tail.add(T);
-        //tail.next = new Node<T>(T);
-//        return null;
+        this.add(data);
     }
 
     public T dequeue(){
-        delete();
-        T data = getHead().data;
-        setHead(getHead().next);
-        return data;
+        return this.delete();
     }
 
 }
