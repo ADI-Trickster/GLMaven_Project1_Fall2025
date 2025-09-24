@@ -27,15 +27,15 @@ public class HMTest {
 
     }
 
-    @Test
-    void HashMapSizeTest() {
-//        assertEquals(0,MyHashMap.getLength(), "wrong length of hashMap");
-//        assertEquals(2,1, "false test");
-    }
-
-    @Test
-    public void test1Test() {
-    }
+//    @Test
+//    void HashMapSizeTest() {
+////        assertEquals(0,MyHashMap.getLength(), "wrong length of hashMap");
+////        assertEquals(2,1, "false test");
+//    }
+//
+//    @Test
+//    public void test1Test() {
+//    }
 
 //    @ParameterizedTest
 //    @ValueSource(ints = {1,2,3,4})
