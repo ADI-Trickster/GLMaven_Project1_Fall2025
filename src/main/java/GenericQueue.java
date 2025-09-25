@@ -1,18 +1,17 @@
-
+import java.util.Iterator;
 public class GenericQueue<T> extends GenericList<T>{
-    Node<T> tail;
-
-//    class GenericNode<T>{
-//        T data;
-//        GenericNode<T> next;
-////        this.setHead(T);
-////        tail = T;
-//    }
+    private Node<T> tail;
 
     public GenericQueue(){//basic constuc
         this.tail = null;
         this.setHead(null);
         this.setLength(0);
+    }
+    public GenericQueue(T data){//constuc w/ one data
+        Node<T> newData = new Node<T>(data);
+        this.tail = newData;
+        this.setHead(newData);
+        this.setLength(1);
     }
 
     public GenericQueue(Node<T> data){//constuc w/ one data
@@ -57,23 +56,25 @@ public class GenericQueue<T> extends GenericList<T>{
             return null;
         }
 
-        Node<T> toDelete = getHead();
-        T data = getHead().data;
-
+        T toDelete;
         //check if only one
-        if(getHead().next == null){
+        if(getHead() == tail){
+            toDelete = tail.data;
+            tail = tail.next;
             setHead(null);
-            this.tail = null;
-            setLength(0);
-            return data;
         }
-        //set tail to 2nd last
-        //updates 2nd.next to null
+        else{
+            Node<T> current = getHead();
+            while(current.next.next != null) {
+                current = current.next;
+            }
+            toDelete = current.data;
+            current.next = null; //updates 2nd.next to null
+            tail = current; //set tail to 2nd last
+            }
 
-
-        setHead(getHead().next);
         setLength(getLength() - 1);
-        return data;
+        return toDelete;
     }
 
     public void enqueue(T data){

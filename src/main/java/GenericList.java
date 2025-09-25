@@ -26,7 +26,6 @@ public abstract class GenericList<T> implements Iterable<T> {
             this.data = data;
             this.code = code;
             this.next = next;
-
         }
     }
 
@@ -107,6 +106,7 @@ public abstract class GenericList<T> implements Iterable<T> {
         return  new ReverseGLLIterator<T>();
     }
     public Iterator<T> iterator() {
+//        return new GLLIterator<T>();
         return null;
     }
 }

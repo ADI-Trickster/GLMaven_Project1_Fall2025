@@ -34,7 +34,6 @@ public class GQTest {
         assertEquals(1,GQ.getLength(), "wrong length of GenericQueue");
         GQ.enqueue(25);
         assertEquals(2,GQ.getLength(), "wrong length of GenericQueue");
-//        assertEquals(2,1, "false test");
         GQ.dequeue();
         assertEquals(1,GQ.getLength(), "wrong length of GenericQueue");
     }
@@ -56,7 +55,8 @@ public class GQTest {
     }
 //
     @Test
-    void QueueSizeFullTest() {}
+    void QueueSizeFullTest() {
+    }
 
     @Test
     void QueueEnqueueTest() {
@@ -72,13 +72,25 @@ public class GQTest {
         GQ.enqueue(35);
         GQ.enqueue(25);
         assertEquals(3,GQ.getLength(), "wrong length of GenericQueue");
-        assertEquals(15,GQ.get(0), "wrong data at index 0 of GenericQueue");
+        assertEquals(25,GQ.get(2), "wrong data at index 2 of GenericQueue");
         GQ.dequeue();
-        assertEquals(35,GQ.get(0), "wrong data at new index 0 of GenericQueue");
+        assertEquals(35,GQ.get(1), "wrong data at new index 1 of GenericQueue");
+        assertEquals(2,GQ.getLength(), "wrong length of GenericQueue");
         GQ.dequeue();
-        assertEquals(25,GQ.get(0), "wrong data at new index 0 of GenericQueue");
+        assertEquals(15,GQ.get(0), "wrong data at new index 0 of GenericQueue");
+        assertEquals(1,GQ.getLength(), "wrong length of GenericQueue");
+    }
 
-        //size should be 1 or 0
+    @Test
+    void QueueDequeueEmptyTest() {
+        assertEquals(1,GQ.getLength(), "wrong length of GenericQueue");
+        GQ.dequeue();
+        assertEquals(0,GQ.getLength(), "wrong length of GenericQueue");
+        GQ.dequeue();
         assertEquals(0,GQ.getLength(), "wrong length of GenericQueue");
     }
+
+    //more Test later
+
 }
+//}

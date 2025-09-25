@@ -1,20 +1,27 @@
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class GLLIterator<T> implements Iterator<T>{
     private GenericList.Node<T> curr;
 
+    public GLLIterator(GenericList.Node<T> head) {
+        this.curr = head;
+    }
 //    GenericList.Node curr =  head;
     //hasNext if head == null ret false
-    @Override
+    //@Override
     public boolean hasNext() {
-        return curr.next != null;
+        if (curr.next != null) {
+            return true;
+        }
+        return false;
     }
 
     //next goes to next and returns current/next data
     @Override
     public T next(){
         if(!hasNext()){
-            return null;
+            throw new NoSuchElementException("does not exist");
         }
         T returnData = curr.data;
         curr = curr.next;
