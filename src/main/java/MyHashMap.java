@@ -6,6 +6,7 @@ public class MyHashMap <T> implements Iterable<T>{
 //    new ArrayList<GenericQueue>();
 
     public MyHashMap(String key, T value){
+
         map = new ArrayList<GenericQueue>(10);
 //        map.put(key,value);
     }

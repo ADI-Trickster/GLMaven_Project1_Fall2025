@@ -49,6 +49,14 @@ public class GenericQueue<T> extends GenericList<T>{
         this.setLength(this.getLength() + 1);
     }
 
+    public Node<T> getTail() {
+        return tail;
+    }
+
+    public void setTail(Node<T> newTail ) {
+        this.tail = newTail;
+    }
+
 //    @Override
     public T delete() {
         //check null

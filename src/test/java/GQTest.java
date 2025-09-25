@@ -88,9 +88,14 @@ public class GQTest {
         assertEquals(0,GQ.getLength(), "wrong length of GenericQueue");
         GQ.dequeue();
         assertEquals(0,GQ.getLength(), "wrong length of GenericQueue");
+        assertEquals(null, GQ.getTail(), "wrong head returned");
     }
 
     //more Test later
+//    @Test
+//    void emptyTest(){}
+//    @Test
+//    void deleteTest(){}
 
 }
 //}
