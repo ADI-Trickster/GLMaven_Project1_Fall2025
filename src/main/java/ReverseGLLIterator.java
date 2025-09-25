@@ -1,8 +1,10 @@
 import java.util.Iterator;
 public class ReverseGLLIterator<T> implements Iterator<T> {
-
     private int index;
 
+    public ReverseGLLIterator() {
+
+    }
 
 //    @Override
     public boolean hasNext() {
