@@ -1,7 +1,10 @@
 import java.util.Iterator;
+import java.util.ArrayList;
+
 public class HMIterator<T> implements Iterator<T> {
     private HMIterator<T> iterator;
-    public HMIterator() {
+
+    public HMIterator(ArrayList<GenericQueue<T>> map, int size) {
 //        this.iterator = iterator;
     }
 
@@ -11,6 +14,10 @@ public class HMIterator<T> implements Iterator<T> {
     };
     @Override
     public T next() {
+        if(!hasNext()){
+            return null;
+        }
+
     return null;
     };
 
