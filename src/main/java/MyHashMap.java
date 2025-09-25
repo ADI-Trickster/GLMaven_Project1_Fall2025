@@ -6,15 +6,13 @@ public class MyHashMap <T> implements Iterable<T>{
 //    new ArrayList<GenericQueue>();
 
     public MyHashMap(String key, T value){
-//        map = new ArrayList<GenericQueue>;
+        map = new ArrayList<GenericQueue>(10);
+        map.put(key,value);
     }
 
     public void put(String key, T value){
-
-    }
-
-    public String hashCode(){
-        return null;
+        int hash = key.hashCode();
+//        map[0].enqueue();
     }
 
     public boolean contains(String key){
@@ -38,8 +36,7 @@ public class MyHashMap <T> implements Iterable<T>{
     }
 
     public Iterator<T> iterator() {
-//        return new HMIterator<T>();
-        return null;
+        return new HMIterator<T>();
     }
 
 }
