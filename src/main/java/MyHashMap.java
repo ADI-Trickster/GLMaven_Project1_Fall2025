@@ -13,9 +13,9 @@ public class MyHashMap <T> implements Iterable<T>{
 
     }
 
-//    public String hashCode(){
-//        return null;
-//    }
+    public String hashCode(){
+        return null;
+    }
 
     public boolean contains(String key){
         return false;
@@ -34,6 +34,11 @@ public class MyHashMap <T> implements Iterable<T>{
     }
 
     public T replace(String key, T value){
+        return null;
+    }
+
+    public Iterator<T> iterator() {
+//        return new HMIterator<T>();
         return null;
     }
 
