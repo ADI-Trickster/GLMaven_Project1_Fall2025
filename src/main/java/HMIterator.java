@@ -1,7 +1,7 @@
 import java.util.Iterator;
 import java.util.ArrayList;
 
-public class HMIterator<T> implements Iterator<T> {
+public class HMIterator<T> implements Iterator<T> {//TODO
     private HMIterator<T> iterator;
 
     public HMIterator(ArrayList<GenericQueue<T>> map, int size) {

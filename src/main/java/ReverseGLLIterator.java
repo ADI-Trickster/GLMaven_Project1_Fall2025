@@ -1,5 +1,5 @@
 import java.util.Iterator;
-public class ReverseGLLIterator<T> implements Iterator<T> {
+public class ReverseGLLIterator<T> implements Iterator<T> {//TODO
     private int index;
 
     //don't use nodes use indexes for this
