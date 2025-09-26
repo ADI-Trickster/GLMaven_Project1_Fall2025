@@ -3,18 +3,18 @@ import java.util.ArrayList;
 
 public class MyHashMap <T> implements Iterable<T>{
     ArrayList<GenericQueue<T>> map;
-    int currSize = 0;
+//    int currSize = 0;
 //    new ArrayList<GenericQueue>();
 
     public MyHashMap(String key, T value){//constuctor
         this.map = new ArrayList<GenericQueue<T>>(10);
-//        map.put(key,value);
+        put(key,value);
     }
 
     public void put(String key, T value){//might be wrong, idk
         int hash = key.hashCode();
         int hashIndex = key.hashCode() & 9;
-        //use hash to decide index // nonneeded hash is index?
+        //use hash to decide index // no needed hash is index?
         //use hash to check if There exist GQ at index for hash
         if(map.get(hashIndex) != null){
             //add(value, hash)//add to the node at that index
@@ -36,7 +36,7 @@ public class MyHashMap <T> implements Iterable<T>{
         return true;
     }
 
-    public T get(String key){
+    public T get(String key){//TODO
         int hash = key.hashCode();
         int hashIndex = key.hashCode() & 9;
 
@@ -46,26 +46,29 @@ public class MyHashMap <T> implements Iterable<T>{
         }
         // return the value at the given key
 
-//        T ret = queue;
+//        while(queue != null){
+//        }
+
+//        T ret = queue;//??
         //does not exist ret null
         return null;
     }
 
     public int size(){
-        return currSize;
+        return map.size();
     }
 
     public boolean isEmpty(){
-        return currSize == 0;
+        return map.size() == 0;
     }
 
-    public T replace(String key, T value){
+    public T replace(String key, T value){//TODO
         //
         return null;
     }
 
     public Iterator<T> iterator() {
-        return new HMIterator<T>(map, currSize);
+        return new HMIterator<T>(map, map.size());
     }
 
 }
