@@ -8,19 +8,28 @@ public class MyHashMap <T> implements Iterable<T>{
     public MyHashMap(String key, T value){
 
         map = new ArrayList<GenericQueue>(10);
-//        map.put(key,value);
+        for (int i = 0; i < 10; i++){
+            map.add(null);
+        }
+        put(key,value);
     }
 
     public void put(String key, T value){
         int hash = key.hashCode();
         //use hash to decide index // nonneeded hash is index?
         //use hash to check if There exist GQ at index for hash
-        if(map.get(hash) != null){
+        int idx = Math.abs(hash) % map.size();
+        while(idx >= map.size()){
+            map.add(null);
+        }
+        if(map.get(idx) != null){
             //add(value, hash)//add to the node at that index
+            map.get(idx).add(value, hash);
         }
         else{// if not make new GQ and put at index
             GenericQueue<T> queue = new GenericQueue<T>();
             queue.add(value, hash);
+            map.set(idx, queue);
         }
     }
 
@@ -35,9 +44,16 @@ public class MyHashMap <T> implements Iterable<T>{
         return null;
     }
 
-    public int size(){
-        return 0;
+    public int size() {
+        int total = 0;
+        for (GenericQueue<T> queue : map) {
+            if (queue != null) {
+                total += queue.getLength();
+            }
+        }
+        return total;
     }
+
 
     public boolean isEmpty(){
         return false;

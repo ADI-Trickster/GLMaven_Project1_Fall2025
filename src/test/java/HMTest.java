@@ -16,16 +16,25 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 public class HMTest {
 
-    static MyHashMap hashMap;
+    static MyHashMap<Integer> hashMap;
 
     @BeforeAll
-    static void setup() {
-//        hashMap;
-    }
+    static void setup() {}
+
     @BeforeEach
     void init() {
-
+        hashMap = new MyHashMap<>("Cosmo", 10);
     }
+
+    @Test
+    void setHashMapTest(){
+        assertEquals(1, hashMap.size(), "wrong size of hashMap");
+        hashMap.put("osmoC", 12);
+        assertEquals(2, hashMap.size(), "wrong size of hashMap");
+    }
+
+//    @Test
+//    void putTest(){}
 
 //    @Test
 //    void HashMapSizeTest() {
