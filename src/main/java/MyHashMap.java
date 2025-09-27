@@ -2,15 +2,18 @@ import java.util.Iterator;
 import java.util.ArrayList;
 
 public class MyHashMap <T> implements Iterable<T>{
-    ArrayList<GenericQueue> map;
-//    new ArrayList<GenericQueue>();
+    //private members
+    private  ArrayList<GenericQueue> map;
+    private int size;
 
+    //constructor
     public MyHashMap(String key, T value){
 
         map = new ArrayList<GenericQueue>(10);
         for (int i = 0; i < 10; i++){
             map.add(null);
         }
+        size = 0;
         put(key,value);
     }
 
@@ -34,7 +37,12 @@ public class MyHashMap <T> implements Iterable<T>{
     }
 
     public boolean contains(String key){
-        return false;
+//        int hash = key.hashCode();
+//        int idx = Math.abs(hash) % map.size();
+//        if(queue == null){
+//            return false;
+//        }
+//        return
     }
 
     public T get(String key){

@@ -34,6 +34,11 @@ public class HMTest {
     }
 
 //    @Test
+//    void containsTest() {
+//        assertEquals(true ,hashMap.contains("Cosmo"), "wrong key value of hashMap");
+//    }
+
+//    @Test
 //    void putTest(){}
 
 //    @Test
