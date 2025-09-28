@@ -102,8 +102,8 @@ public abstract class GenericList<T> implements Iterable<T> {
         this.head = newHead;
     }
 
-    public Iterator<T> descendingIterator() {
-        return  new ReverseGLLIterator<T>();
+    public Iterator<T> descendingIterator(){
+        return new ReverseGLLIterator<T>();
     }
     public Iterator<T> iterator() {
         return new GLLIterator<T>(getHead());

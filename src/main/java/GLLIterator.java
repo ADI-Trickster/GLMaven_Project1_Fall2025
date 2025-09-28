@@ -1,7 +1,7 @@
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class GLLIterator<T> implements Iterator<T>{//TODO check it
+public class GLLIterator<T> implements Iterator<T>{
     private GenericList.Node<T> curr;
 
     public GLLIterator(GenericList.Node<T> head) {
@@ -27,5 +27,4 @@ public class GLLIterator<T> implements Iterator<T>{//TODO check it
         curr = curr.next;
         return returnData;
     }
-
 }

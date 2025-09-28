@@ -17,6 +17,6 @@ public class ReverseGLLIterator<T> implements Iterator<T> {//TODO
         //check if it has next
         T data = null;//get() data at index
 //        index--;
-        return  data;
+        return data;
     }
 }
