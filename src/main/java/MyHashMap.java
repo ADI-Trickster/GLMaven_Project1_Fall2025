@@ -3,29 +3,63 @@ import java.util.ArrayList;
 
 public class MyHashMap <T> implements Iterable<T>{
     ArrayList<GenericQueue<T>> map;
-//    int currSize = 0;
+    private int size;
+    private GenericQueue<T> queue;
+    private static class keyVal<T>{
+        String key;
+        T value;
+        public keyVal(String key, T value, int code){
+            this.key = key;
+            this.value = value;
+        }
+    }
 //    new ArrayList<GenericQueue>();
 
-    public MyHashMap(String key, T value){//constuctor
-        this.map = new ArrayList<GenericQueue<T>>(10);
+    public MyHashMap(String key, T value){
+
+        map = new ArrayList<GenericQueue<T>>(10);
+        for (int i = 0; i < 10; i++){
+            map.add(null);
+        }
+        size = 0;
         put(key,value);
     }
 
-    public void put(String key, T value){//might be wrong, idk
-        int hash = key.hashCode();
-        int hashIndex = key.hashCode() & 9;
-        //use hash to decide index // no needed hash is index?
-        //use hash to check if There exist GQ at index for hash
-        if(map.get(hashIndex) != null){
-            //add(value, hash)//add to the node at that index
-            map.get(hashIndex).add(value,hash);
-        }
-        else{// if not make new GQ and put at index
-            GenericQueue<T> queue = new GenericQueue<T>();
-            queue.add(value, hash);
-            map.add(hashIndex, queue);
-        }
+//    public void put(String key, T value){//might be wrong, idk
+//        int hash = key.hashCode();
+//        int hashIndex = key.hashCode() & 9;
+//        //use hash to decide index // no needed hash is index?
+//        //use hash to check if There exist GQ at index for hash
+//        if(map.get(hashIndex) != null){
+////            add(value, hash)//add to the node at that index
+//            map.get(hashIndex).add(value,hash);
+//        }
+//        else{// if not make new GQ and put at index
+//            GenericQueue<T> queue = new GenericQueue<T>();
+//            queue.add(value, hash);
+////            map.get(hashIndex).add(value,hash);//
+//            map.add(hashIndex, queue);
+//        }
+//    }
+
+public void put(String key, T value){
+    int hash = key.hashCode();
+    //use hash to decide index // nonneeded hash is index?
+    //use hash to check if There exist GQ at index for hash
+    int idx = Math.abs(hash) % map.size();
+    while(idx >= map.size()){
+        map.add(null);
     }
+    if(map.get(idx) != null){
+        //add(value, hash)//add to the node at that index
+        map.get(idx).add(value, hash);
+    }
+    else{// if not make new GQ and put at index
+        GenericQueue<T> queue = new GenericQueue<T>();
+        queue.add(value, hash);
+        map.set(idx, queue);
+    }
+}
 
     public boolean contains(String key){
         int hash = key.hashCode();
@@ -54,8 +88,14 @@ public class MyHashMap <T> implements Iterable<T>{
         return null;
     }
 
-    public int size(){
-        return map.size();
+    public int size() {
+        int total = 0;
+        for (GenericQueue<T> queue : map) {
+            if (queue != null) {
+                total += queue.getLength();
+            }
+        }
+        return total;
     }
 
     public boolean isEmpty(){
@@ -68,7 +108,7 @@ public class MyHashMap <T> implements Iterable<T>{
     }
 
     public Iterator<T> iterator() {
-        return new HMIterator<T>(map, map.size());
+        return new HMIterator<T>(map);
     }
 
 }
