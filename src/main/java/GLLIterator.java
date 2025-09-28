@@ -1,10 +1,10 @@
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class GLLIterator<T> implements Iterator<T>{
+public class GLLIterator<E> implements Iterator<E>{
     private GenericList.Node<T> curr;
 
-    public GLLIterator(GenericList.Node<T> head) {
+    public GLLIterator(GenericList.Node<E> head) {
         this.curr = head;
     }
 //    GenericList.Node curr =  head;
