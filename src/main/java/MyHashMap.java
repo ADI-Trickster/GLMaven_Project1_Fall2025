@@ -3,8 +3,16 @@ import java.util.ArrayList;
 
 public class MyHashMap <T> implements Iterable<T>{
     //private members
-    private  ArrayList<GenericQueue> map;
-    private int size;
+    private  ArrayList<GenericQueue<keyVal<T>> map;
+
+    private static class keyVal<T>{
+        String key;
+        T value;
+        public keyVal(String key, T value){
+            this.key = key;
+            this.value = value;
+        }
+    }
 
     //constructor
     public MyHashMap(String key, T value){
@@ -42,7 +50,7 @@ public class MyHashMap <T> implements Iterable<T>{
 //        if(queue == null){
 //            return false;
 //        }
-//        return
+        return false;
     }
 
     public T get(String key){
