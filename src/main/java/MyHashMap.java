@@ -4,11 +4,12 @@ import java.util.ArrayList;
 public class MyHashMap <T> implements Iterable<T>{
     ArrayList<GenericQueue<T>> map;
     private int size;
-    private GenericQueue<T> queue;
+//    private GenericQueue<T> queue;
     private static class keyVal<T>{
         String key;
         T value;
-        public keyVal(String key, T value, int code){
+
+        public keyVal(String key, T value){
             this.key = key;
             this.value = value;
         }
@@ -16,7 +17,6 @@ public class MyHashMap <T> implements Iterable<T>{
 //    new ArrayList<GenericQueue>();
 
     public MyHashMap(String key, T value){
-
         map = new ArrayList<GenericQueue<T>>(10);
         for (int i = 0; i < 10; i++){
             map.add(null);
@@ -44,7 +44,6 @@ public class MyHashMap <T> implements Iterable<T>{
 
 public void put(String key, T value){
     int hash = key.hashCode();
-    //use hash to decide index // nonneeded hash is index?
     //use hash to check if There exist GQ at index for hash
     int idx = Math.abs(hash) % map.size();
     while(idx >= map.size()){
@@ -61,30 +60,33 @@ public void put(String key, T value){
     }
 }
 
-    public boolean contains(String key){
+    public boolean contains(String key) {
         int hash = key.hashCode();
         int hashIndex = key.hashCode() & 9;
         if(map.get(hashIndex) == null){
             return false;
         }
-        return true;
+        //get that queue of map using get(index)
+//        make a node to that can gets the queue head
+//        if it finds that code in the queue return true
+        return false;
     }
 
     public T get(String key){//TODO
         int hash = key.hashCode();
         int hashIndex = key.hashCode() & 9;
-
         GenericQueue<T> queue =  map.get(hashIndex);
-        if(queue == null){
+        if(queue.getHead() == null){
             return null;
         }
         // return the value at the given key
-
-//        while(queue != null){
-//        }
-
-//        T ret = queue;//??
-        //does not exist ret null
+        GenericList.Node<T> curr = queue.getHead();
+        while(curr != null){
+            if(curr.code == hashIndex ){
+                return curr.data;
+            }
+            curr = curr.next;
+        }
         return null;
     }
 
@@ -102,8 +104,17 @@ public void put(String key, T value){
         return map.size() == 0;
     }
 
-    public T replace(String key, T value){//TODO
-        //
+    public T replace(String key, T value){
+        int hash = key.hashCode();
+        int hashIndex = key.hashCode() & 9;
+        GenericQueue<T> queue =  map.get(hashIndex);
+        GenericList.Node<T> curr = queue.getHead();
+        while(curr != null){
+            if(curr.code == hash){
+                //do stuff
+            }
+            curr = curr.next;
+        }
         return null;
     }
 
