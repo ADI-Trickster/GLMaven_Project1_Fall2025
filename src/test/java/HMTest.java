@@ -28,7 +28,7 @@ public class HMTest {
     }
 
     @Test
-    void setHashMapTest(){
+    void setHashMapAndSizeTest(){
         assertEquals(1, hashMap.size(), "wrong size of hashMap");
         hashMap.put("osmoC", 12);
         assertEquals(2, hashMap.size(), "wrong size of hashMap");
@@ -43,11 +43,6 @@ public class HMTest {
     void HasConstructorTest(){
         assertEquals(1, hashMap.size(),"hashmap size is 1");
         assertEquals(false, hashMap.isEmpty(),"hashmap is not empty");
-    }
-
-    @Test
-    void HashMapSizeTest() {
-        assertEquals(1,hashMap.size(), "wrong length of hashMap");
     }
 
     @Test
@@ -96,7 +91,7 @@ public class HMTest {
         hashMap.put("Clash", 4);
         hashMap.put("Royal", 1);
         hashMap.put("Great", 19);
-        assertEquals(11 ,hashMap.size(), "wrong length of hashMap");
+        assertEquals(11 ,hashMap.size(), "collision occures");
     }
 
 }
