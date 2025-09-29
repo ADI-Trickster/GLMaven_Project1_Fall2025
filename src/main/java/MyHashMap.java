@@ -61,7 +61,7 @@ public class MyHashMap <T> implements Iterable<T>{
         // return the value at the given key
         GenericList.Node<T> curr = queue.getHead();
         while (curr != null) {
-            if (curr.code == hashIndex) {
+            if (curr.code == hash) {
                 return curr.data;
             }
             curr = curr.next;

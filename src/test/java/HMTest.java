@@ -40,62 +40,63 @@ public class HMTest {
     }
 
     @Test
-    void putTest(){
-
-
-    @Test
     void HasConstructorTest(){
-//        hashMap = new MyHashMap("test", 10);
-
         assertEquals(1, hashMap.size(),"hashmap size is 1");
         assertEquals(false, hashMap.isEmpty(),"hashmap is not empty");
     }
 
     @Test
     void HashMapSizeTest() {
-//        assertEquals(1,MyHashMap.size(), "wrong length of hashMap");
+        assertEquals(1,hashMap.size(), "wrong length of hashMap");
     }
 
     @Test
     void getKeyTest(){
-//        hashMap = new MyHashMap("test", 10);
-    }
+        hashMap.put("Clash", 4);
+        hashMap.put("Great", 19);
+        hashMap.put("Helps", 1);
 
-    @Test
-    public void getfuncTest() {
-
+        assertEquals(10, hashMap.get("Cosmo"), "wrong value");
+        assertEquals(4, hashMap.get("Clash"), "wrong value");
+        assertEquals(19, hashMap.get("Great"), "wrong value");
+        assertEquals(1, hashMap.get("Helps"), "wrong value");
     }
 
     @Test
     void putTest(){
+        hashMap.put("Clash", 4);
+        hashMap.put("Great", 19);
 
-    }
-
-    @Test
-    void containsKeyTest(){
-    }
-    @Test
-    void containsValueTest(){
-
+        assertEquals(10, hashMap.get("Cosmo"), "Cosmo value incorrect");
+        assertEquals(4, hashMap.get("Clash"), "Clash value incorrect");
+        assertEquals(19, hashMap.get("Great"), "Great value incorrect");
     }
 
     @Test
     void replaceKeyTest(){
-    }
+        hashMap.put("Coast", 5);
+        Integer oldVal = hashMap.replace("Coast", 10); // replace its value
 
-    @Test
-    void ForEveryKeyTest(){
+        assertEquals(5, oldVal, "replace should return old value");
+        assertTrue(hashMap.contains("Coast"), "key should still exist");
+
+        // check if new value is set
+        assertEquals(10, hashMap.get("Coast"), "value should be updated to 10");
     }
 
     @Test
     void collisonTest(){
+        hashMap.put("osmoC", 13);
+        hashMap.put("ooC", 11);
+        hashMap.put("osC", 10);
+        hashMap.put("osoC", 2);
+        hashMap.put("BAM", 3);
+        hashMap.put("GOOD", 9);
+        hashMap.put("Loot", 5);
+        hashMap.put("Clash", 4);
+        hashMap.put("Royal", 1);
+        hashMap.put("Great", 19);
+        assertEquals(11 ,hashMap.size(), "wrong length of hashMap");
     }
-
-
-
-//    @ParameterizedTest
-//    @ValueSource(ints = {1,2,3,4})
-//    void parameterTest(int val) {
-//    }
 
 }
