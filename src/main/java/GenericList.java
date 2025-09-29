@@ -103,7 +103,7 @@ public abstract class GenericList<T> implements Iterable<T> {
     }
 
     public Iterator<T> descendingIterator() {
-        return  new ReverseGLLIterator<T>();
+        return new ReverseGLLIterator<T>(this);
     }
     public Iterator<T> iterator() {
         return new GLLIterator<T>(getHead());

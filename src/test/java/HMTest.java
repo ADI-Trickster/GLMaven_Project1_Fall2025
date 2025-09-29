@@ -33,14 +33,15 @@ public class HMTest {
         assertEquals(2, hashMap.size(), "wrong size of hashMap");
     }
 
-//    @Test
-//    void containsTest() {
-//        assertEquals(true ,hashMap.contains("Cosmo"), "wrong key value of hashMap");
-//    }
+    @Test
+    void containsTest() {
+        assertEquals(true ,hashMap.contains("Cosmo"), "wrong key value of hashMap");
+    }
 
-//    @Test
-//    void putTest(){
-//    }
+    @Test
+    void putTest(){
+
+    }
 
 //    @Test
 //    void HashMapSizeTest() {

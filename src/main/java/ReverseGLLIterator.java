@@ -1,20 +1,30 @@
 import java.util.Iterator;
-public class ReverseGLLIterator<T> implements Iterator<T> {
+
+public class ReverseGLLIterator<T> implements Iterator<T> {//TODO
     private int index;
+    private GenericList<T> list;
 
-    public ReverseGLLIterator() {
-
+    //don't use nodes use indexes for this
+    public ReverseGLLIterator(GenericList<T> head) {
+        list = head;
+        index = list.getLength() - 1;
     }
 
-//    @Override
+    //    @Override
     public boolean hasNext() {
-        return index>0;
+        if (index >= 0) {
+            return true;
+        }
+        return false;
     }
 
-    public T next(){
+    public T next() {
         //check if it has next
-        T data = null;//get() data at index
+        if(hasNext()){
+            return null;
+        }
+        T data = list.get(index);//get() data at index
         index--;
-        return  data;
+        return data;
     }
 }
