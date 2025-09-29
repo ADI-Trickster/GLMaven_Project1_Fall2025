@@ -18,16 +18,30 @@ import java.util.ArrayList;
 
 public class HMTest {
 
-    static MyHashMap hashMap;
+    static MyHashMap<Integer> hashMap;
 
     @BeforeAll
-    static void setup() {
+    static void setup() {}
+    @BeforeEach
+    void init() {
+        hashMap = new MyHashMap<>("Cosmo", 10);
     }
 
-    @BeforeEach
-    void init(){
-        hashMap = new MyHashMap("test", 10);
+    @Test
+    void setHashMapTest(){
+        assertEquals(1, hashMap.size(), "wrong size of hashMap");
+        hashMap.put("osmoC", 12);
+        assertEquals(2, hashMap.size(), "wrong size of hashMap");
     }
+
+    @Test
+    void containsTest() {
+        assertEquals(true ,hashMap.contains("Cosmo"), "wrong key value of hashMap");
+    }
+
+    @Test
+    void putTest(){
+
 
     @Test
     void HasConstructorTest(){

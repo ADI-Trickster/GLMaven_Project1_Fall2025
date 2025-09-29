@@ -61,6 +61,7 @@ public class GQTest {
     @Test
     void QueueEnqueueTest() {
         GQ.enqueue(35);
+        assertEquals(35, GQ.getTail().data, "wrong tail connect");
         GQ.enqueue(25);
         assertEquals(15,GQ.get(0), "wrong data at index 0 of GenericQueue");
         assertEquals(35,GQ.get(1), "wrong data at index 1 of GenericQueue");
@@ -74,6 +75,7 @@ public class GQTest {
         assertEquals(3,GQ.getLength(), "wrong length of GenericQueue");
         assertEquals(25,GQ.get(2), "wrong data at index 2 of GenericQueue");
         GQ.dequeue();
+        assertEquals(35, GQ.getTail().data, "wrong tail connect");
         assertEquals(35,GQ.get(1), "wrong data at new index 1 of GenericQueue");
         assertEquals(2,GQ.getLength(), "wrong length of GenericQueue");
         GQ.dequeue();

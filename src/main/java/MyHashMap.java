@@ -1,20 +1,18 @@
 import java.util.Iterator;
 import java.util.ArrayList;
 
-public class MyHashMap<T> implements Iterable<T> {
+public class MyHashMap <T> implements Iterable<T>{
     ArrayList<GenericQueue<T>> map;
-//    private GenericQueue<T> queue;
 
-    public MyHashMap(String key, T value) {
+    public MyHashMap(String key, T value){
         map = new ArrayList<GenericQueue<T>>();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 10; i++){
             map.add(null);
         }
-        put(key, value);
+        put(key,value);
     }
 
-
-    public void put(String key, T value) {
+    public void put(String key, T value){
         int hash = Math.abs(key.hashCode());
         //use hash to check if There exist GQ at index for hash
         int idx = Math.abs(hash) % map.size();
@@ -26,16 +24,25 @@ public class MyHashMap<T> implements Iterable<T> {
             map.get(idx).add(value, hash);
         } else {// if not make new GQ and put at index
             GenericQueue<T> queue = new GenericQueue<T>();
-            queue.add(value, hash);
+            queue.add(value, hash);     
             map.set(idx, queue);
         }
     }
 
-    public boolean contains(String key) {//TODO
-        int hash = key.hashCode();
-        int hashIndex = Math.abs(key.hashCode()) & 9;
-        if (map.get(hashIndex) == null) {
+    public boolean contains(String key) {
+        int hash = Math.abs(key.hashCode());
+        int hashIndex = hash % map.size();
+
+        if(map.get(hashIndex) == null){
             return false;
+        }
+        GenericQueue<T> queue = map.get(hashIndex);
+        GenericList.Node<T> curr = queue.getHead();
+        while(curr != null){
+            if(curr.code == hash){
+                return true;
+            }
+            curr = curr.next;
         }
         //get that queue of map using get(index)
 //        make a node to that can gets the queue head
@@ -44,8 +51,9 @@ public class MyHashMap<T> implements Iterable<T> {
     }
 
     public T get(String key) {
-        int hash = key.hashCode();
-        int hashIndex = key.hashCode() & 9;
+        int hash = Math.abs(key.hashCode());
+        int hashIndex = hash % map.size();
+
         GenericQueue<T> queue = map.get(hashIndex);
         if (queue.getHead() == null) {
             return null;
@@ -71,21 +79,26 @@ public class MyHashMap<T> implements Iterable<T> {
         return total;
     }
 
-    public boolean isEmpty() {
+    public boolean isEmpty(){
         return map.size() == 0;
     }
 
-    public T replace(String key, T value) {
-        int hash = key.hashCode();
-        int hashIndex = Math.abs(hash) & 9;
-        GenericQueue<T> queue = map.get(hashIndex);
+    public T replace(String key, T value){
+        int hash = Math.abs(key.hashCode());
+        int hashIndex = hash % map.size();
+
+        GenericQueue<T> queue =  map.get(hashIndex);
+        if(queue == null){
+            return null;
+        }
         GenericList.Node<T> curr = queue.getHead();
-        while (curr != null) {
-            if (curr.code == hash) {
+        while(curr != null){
+            if(curr.code == hash){
                 //do stuff
-                T ret  = curr.data;
+                T oldVal = curr.data;
                 curr.data = value;
-                return ret;
+                return oldVal;
+
             }
             curr = curr.next;
         }
@@ -96,3 +109,4 @@ public class MyHashMap<T> implements Iterable<T> {
         return new HMIterator<T>(map);
     }
 }
+
