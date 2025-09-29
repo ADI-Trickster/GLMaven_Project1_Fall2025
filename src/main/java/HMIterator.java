@@ -17,7 +17,7 @@ public class HMIterator<T> implements Iterator<T> {//TODO Finsish
 
     @Override
     public boolean hasNext() {
-        if (curr == null && index < 10) {
+        while(curr == null && index < 10) {
             index++;
             if(index < 10){
                 queue = map.get(index);

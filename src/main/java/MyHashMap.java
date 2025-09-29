@@ -33,7 +33,7 @@ public class MyHashMap<T> implements Iterable<T> {
 
     public boolean contains(String key) {//TODO
         int hash = key.hashCode();
-        int hashIndex = key.hashCode() & 9;
+        int hashIndex = Math.abs(key.hashCode()) & 9;
         if (map.get(hashIndex) == null) {
             return false;
         }
@@ -75,14 +75,17 @@ public class MyHashMap<T> implements Iterable<T> {
         return map.size() == 0;
     }
 
-    public T replace(String key, T value) {//TODO
+    public T replace(String key, T value) {
         int hash = key.hashCode();
-        int hashIndex = key.hashCode() & 9;
+        int hashIndex = Math.abs(hash) & 9;
         GenericQueue<T> queue = map.get(hashIndex);
         GenericList.Node<T> curr = queue.getHead();
         while (curr != null) {
             if (curr.code == hash) {
                 //do stuff
+                T ret  = curr.data;
+                curr.data = value;
+                return ret;
             }
             curr = curr.next;
         }
