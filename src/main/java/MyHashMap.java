@@ -5,29 +5,27 @@ public class MyHashMap <T> implements Iterable<T>{
     ArrayList<GenericQueue<T>> map;
 
     public MyHashMap(String key, T value){
-        map = new ArrayList<GenericQueue<T>>(10);
+        map = new ArrayList<GenericQueue<T>>();
         for (int i = 0; i < 10; i++){
             map.add(null);
         }
-//        size = 0;
         put(key,value);
     }
 
     public void put(String key, T value){
         int hash = Math.abs(key.hashCode());
-        int hashIndex = hash % map.size();
-
-        while(hashIndex >= map.size()){
+        //use hash to check if There exist GQ at index for hash
+        int idx = Math.abs(hash) % map.size();
+        while (idx >= map.size()) {
             map.add(null);
         }
-        if(map.get(hashIndex) != null){
+        if (map.get(idx) != null) {
             //add(value, hash)//add to the node at that index
-            map.get(hashIndex).add(value, hash);
-        }
-        else{// if not make new GQ and put at index
+            map.get(idx).add(value, hash);
+        } else {// if not make new GQ and put at index
             GenericQueue<T> queue = new GenericQueue<T>();
-            queue.add(value, hash);
-            map.set(hashIndex, queue);
+            queue.add(value, hash);     
+            map.set(idx, queue);
         }
     }
 
@@ -71,7 +69,6 @@ public class MyHashMap <T> implements Iterable<T>{
         return null;
     }
 
-
     public int size() {
         int total = 0;
         for (GenericQueue<T> queue : map) {
@@ -101,6 +98,7 @@ public class MyHashMap <T> implements Iterable<T>{
                 T oldVal = curr.data;
                 curr.data = value;
                 return oldVal;
+
             }
             curr = curr.next;
         }
@@ -111,3 +109,4 @@ public class MyHashMap <T> implements Iterable<T>{
         return new HMIterator<T>(map);
     }
 }
+

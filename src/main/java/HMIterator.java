@@ -9,15 +9,15 @@ public class HMIterator<T> implements Iterator<T> {//TODO Finsish
     private int index;
 
     public HMIterator(ArrayList<GenericQueue<T>> map) {
-        this.map = map;
-        queue = map.get(0);
-        curr = queue.getHead();
-        index = 0;
+            this.map = map;
+            queue = map.get(0);
+            curr = queue.getHead();
+            index = 0;
     }
 
     @Override
     public boolean hasNext() {
-        if (curr == null && index < 10) {
+        while(curr == null && index < 10) {
             index++;
             if(index < 10){
                 queue = map.get(index);
@@ -41,7 +41,7 @@ public class HMIterator<T> implements Iterator<T> {//TODO Finsish
         }
         T ret = curr.data;
         curr = curr.next;
-        return ret;
+    return ret;
     };
 
 }

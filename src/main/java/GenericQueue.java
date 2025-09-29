@@ -4,27 +4,27 @@ public class GenericQueue<T> extends GenericList<T>{
 
     public GenericQueue(){//basic constuc
         this.tail = null;
-        this.setHead(null);
-        this.setLength(0);
+        setHead(null);
+        setLength(0);
     }
     public GenericQueue(T data){//constuc w/ one data
         Node<T> newData = new Node<T>(data);
         this.tail = newData;
-        this.setHead(newData);
-        this.setLength(1);
+        setHead(newData);
+        setLength(1);
     }
 
     public GenericQueue(Node<T> data){//constuc w/ one data
         this.tail = data;
-        this.setHead(data);
-        this.setLength(1);
+        setHead(data);
+        setLength(1);
     }
 
-    @Override
+//    @Override
     public void add(T data){
         Node<T> toAdd = new Node<T>(data);
         if(getHead() == null){
-            this.setHead(toAdd);
+            setHead(toAdd);
             this.tail = toAdd;
         }
         else{
@@ -90,7 +90,7 @@ public class GenericQueue<T> extends GenericList<T>{
     }
 
     public T dequeue(){
-        return this.delete();
+        return delete();
     }
 
 }
